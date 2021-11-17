@@ -1,4 +1,4 @@
-# JSON RESTful (first) API with Rails back-end
+# JSON RESTful API with Rails back-end
 
 ## Tech stack
 
