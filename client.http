@@ -1,9 +1,39 @@
 GET http://localhost:3000/categories
 
 ###
-
 GET http://localhost:3000/posts
 
 ###
-
+# Post with valid ID
 GET http://localhost:3000/posts/1
+
+###
+# Post with invalid ID
+GET http://localhost:3000/posts/99
+
+###
+# Login with correct details:
+# username: 'bobo', email: 'bobo@test.com', password: '123456'
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "auth":
+  {
+    "email": "bobo@test.com",
+    "password": "123456"
+  }
+}
+
+###
+# Login with incorrect details:
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "auth":
+  {
+    "email": "bobo@test.com",
+    "password": "12345"
+  }
+}

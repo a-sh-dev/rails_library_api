@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if User.count == 0
-  User.create(username: "bobo", email: "bobo@test.com", password: "123456", password_confirmation: "123456")
+  User.create(username: 'bobo', email: 'bobo@test.com', password: '123456', password_confirmation: '123456')
   puts "--- Created #{User.count} user/s"
 end
 
 if Category.count == 0
-  categories = ["code", "health", "entertainment", "food"]
+  categories = %w[code health entertainment food]
   categories.each do |category|
     Category.create(name: category)
     puts "- Created #{category} category"
@@ -25,9 +25,9 @@ if BlogPost.count == 0
     author = User.first
     BlogPost.create(
       author: author,
-      title: Faker::Lorem.words(number: 3).join(" "),
+      title: Faker::Lorem.words(number: 3).join(' '),
       content: Faker::Lorem.paragraph_by_chars(number: 2000, supplemental: false),
-      category_id: rand(5) + 1
+      category_id: rand(1..5)
     )
   end
   puts "--- Created #{BlogPost.count} blog posts"
