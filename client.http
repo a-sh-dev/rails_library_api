@@ -20,7 +20,7 @@ Content-Type: application/json
 {
   "auth":
   {
-    "email": "bobo@test.com",
+    "email": "nyomi@test.com",
     "password": "123456"
   }
 }
@@ -37,3 +37,41 @@ Content-Type: application/json
     "password": "12345"
   }
 }
+
+###
+# Register with correct details
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "nyomi1@test.com",
+  "username": "nyomi1",
+  "password": "123456",
+  "password_confirmation": "123456"
+}
+
+###
+# With Token
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE2MzczMDQ0NjJ9.JT2lZN3iiel91bFtIjBl7GLqVEv4hr4QmNdKgcfEs1Y"
+
+{
+  "title": "I've got a token!",
+  "content": "Woohooo!",
+  "category_id": 1
+}
+
+###
+# Edit post 1
+PUT http://localhost:3000/posts/1
+Content-Type: application/json
+
+{
+  "title": "I am authenticated",
+  "content": "Edited"
+}
+
+###
+# Delete post 1
+DELETE http://localhost:3000/posts/1
