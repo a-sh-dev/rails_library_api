@@ -12,7 +12,7 @@ RSpec.describe 'Auths', type: :request do
 
     context 'with correct credentials' do
       before(:each) do
-        post 'auth/login', params: { auth: { login: user_email, password: user_password } }
+        post '/auth/login', params: { auth: { login: user_email, password: user_password } }
       end
 
       it 'should return 200 ok' do
@@ -27,7 +27,7 @@ RSpec.describe 'Auths', type: :request do
 
     context 'with incorrect credentials' do
       before(:each) do
-        post 'auth/login', params: { auth: { login: user_email, password: 'wrongpassword' } }
+        post '/auth/login', params: { auth: { login: user_email, password: 'wrongpassword' } }
       end
 
       it 'should return 422 unprocessable' do

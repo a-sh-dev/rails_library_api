@@ -16,7 +16,7 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create(post_params)
+    post = current_user.blog_posts.create(post_params)
     render_post(post)
   end
 
@@ -40,7 +40,7 @@ class BlogPostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :user_id)
+    params.require(:blog_post).permit(:title, :content, :category_id, :user_id)
   end
 
   def authorize
@@ -48,13 +48,12 @@ class BlogPostsController < ApplicationController
   end
 
   def render_post(post)
-    if post.errors.any?
-      render json: { errors: post.errors.full_message }, status: 422
-
-    else
+    if post.errors.none?
       render json: post, include: {
         author: { only: :username }, category: { only: :name }
       }, status: 201
+    else
+      render json: { errors: post.errors.full_messages }, status: 422
     end
   end
 end

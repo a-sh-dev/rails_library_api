@@ -20,7 +20,7 @@ Content-Type: application/json
 {
   "auth":
   {
-    "email": "nyomi@test.com",
+    "login": "bobo",
     "password": "123456"
   }
 }
@@ -33,7 +33,7 @@ Content-Type: application/json
 {
   "auth":
   {
-    "email": "bobo@test.com",
+    "login": "bobo",
     "password": "12345"
   }
 }
@@ -63,9 +63,10 @@ Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE2MzczMDQ0
 }
 
 ###
-# Edit post 1
-PUT http://localhost:3000/posts/1
+# Edit post 1 (with token)
+PUT http://localhost:3000/posts/2
 Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzczMDg3MTV9.jIE3UB4FO6N-fvXgAs-TWIyYxms1FlrFnDZJqmZz9ho"
 
 {
   "title": "I am authenticated",
@@ -75,3 +76,4 @@ Content-Type: application/json
 ###
 # Delete post 1
 DELETE http://localhost:3000/posts/1
+Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzczMDg3MTV9.jIE3UB4FO6N-fvXgAs-TWIyYxms1FlrFnDZJqmZz9ho"
